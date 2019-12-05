@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="no">
 
+    <head>
+        <meta charset="utf-8">
+        <title>Henrik Andreas</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}" />
+
+    </head>
 
     <body>
-        <h1>This is a Heading</h1>
+        <nav>
+            <p>Henrik</p>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Interests</a>
+                    <ul>
+                      <li><a href="#">Languages</a></li>
+                      <li><a href="#">Electronics</a></li>
+                      <li><a href="#">Programming</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Contact</a></li>
+
+            </ul>
+        </nav>
     </body>
 
-</html>
+</html> 
