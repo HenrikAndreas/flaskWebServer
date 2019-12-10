@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: gray;
     background-size: cover;
 }
 
@@ -13,7 +13,14 @@ nav {
     height: 60px;
     background-color: #fff;
 }
-
+nav h1 a {
+    font-family: arial;
+    color: #222;
+    font-size: 24px;
+    line-height: 55px;
+    float: right;
+    padding: 0px 20px;
+}
 nav p {
     font-family: arial;
     color: #222;
@@ -23,6 +30,7 @@ nav p {
     padding: 0px 20px;
 
 }
+
 nav ul {
     float: left;
 }
@@ -43,6 +51,10 @@ nav ul li a {
     padding: 22px 14px;
     text-decoration: none;
 }
+
+nav ul li a:hover {
+    background-color: #a3a3a3
+}
 nav ul li ul {
     display: none;
     position: absolute;
@@ -52,7 +64,6 @@ nav ul li ul {
 }
 nav ul li:hover ul {
     display: block;
-
 }
 
 nav ul li ul li {
