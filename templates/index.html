@@ -11,23 +11,21 @@
 
     <body>
         <nav>
-            <p>Henrik</p>
+            <p>Raspi</p>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Interests</a>
+                <li><a href="{{  url_for('home') }}">Home</a></li>
+                <li><a href="#">Playground</a>
                     <ul>
-                      <li><a href="#">Languages</a></li>
-                      <li><a href="#">Electronics</a></li>
-                      <li><a href="#">Programming</a></li>
+                      <li><a href="#">Lamp</a></li>
+                      <li><a href="#">Buzzer</a></li>
+                      <li><a href="#">Camera</a></li>
                     </ul>
                 </li>
-                <li><a href="#">About Me</a></li>
+                <li><a href="#">Information</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
             
-            <h1><a href="#">Login</a></h1>
-
-
+            <h1><a href=" {{ url_for('login') }}">Login</a></h1>
         </nav>
     </body>
 

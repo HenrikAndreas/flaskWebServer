@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="no">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Henrik Andreas</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}" />
+
+    </head>
+
+    <body>
+        <nav>
+            <p>Henrik</p>
+            <ul>
+                <li><a href="{{  url_for('home') }}">Home</a></li>
+                <li><a href="#">Interests</a>
+                    <ul>
+                      <li><a href="#">Languages</a></li>
+                      <li><a href="#">Electronics</a></li>
+                      <li><a href="#">Programming</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <h1><a href=" {{ url_for('login') }}">Login</a></h1>
+        </nav>
+    </body>
+
+</html> 
