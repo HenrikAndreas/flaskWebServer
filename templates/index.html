@@ -1,32 +1,16 @@
-<!DOCTYPE html>
+{% extends 'layout.html' %}
 
-<html lang="no">
-
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Henrik Andreas</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}" />
-
-    </head>
-
-    <body>
-        <nav>
-            <p>Raspi</p>
-            <ul>
-                <li><a href="{{  url_for('home') }}">Home</a></li>
-                <li><a href="#">Playground</a>
-                    <ul>
-                      <li><a href="#">Lamp</a></li>
-                      <li><a href="#">Buzzer</a></li>
-                      <li><a href="#">Camera</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Information</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            
-            <h1><a href=" {{ url_for('login') }}">Login</a></h1>
-        </nav>
-    </body>
-
-</html> 
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ post['author'] }}</a>
+                <small class="text-muted">{{ post['date'] }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post['title'] }}</a></h2>
+            <p class="article-content">{{ post['content'] }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
