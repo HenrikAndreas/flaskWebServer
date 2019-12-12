@@ -20,6 +20,25 @@ posts = [
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'pakhoda'
 
+# Adding data from /register, to database after submitting
+def addData(name, password, email):
+    database = open("database.dat", 'a')
+    database.write(f"{name} {password} {email}\n")
+    database.close()
+# Setting data from database into dictionary
+def getData():
+    data = {}
+    database = open("database.dat", 'r')
+    line = database.readline()
+    while line != "":
+        line = line.lstrip().rstrip().split()
+        data[line[0]] = {"password" : line[1], "email" : line[2]}
+        line = database.readline()
+    return data
+
+
+        
+
 @app.route('/')
 @app.route('/home')
 def home():
@@ -29,9 +48,11 @@ def home():
 def login():
     form = Login() # Form from the forms.py file
     if form.validate_on_submit():
-        if form.username.data == "Henrik" and form.password.data == "7mammA99":
-            flash(f"You're now logged in {form.username.data}", "success")
-            return redirect(url_for('home'))
+        data = getData()
+        username = form.username.data
+        password = form.password.data
+        if username in data and data[username]["password"] == password:
+            flash(f"You're now logged in {username}", "success")
         else:
             flash(f"Unsuccessful login. Check credentials", "danger")
     return render_template('login.html', title = 'Login', form=form)
@@ -41,6 +62,12 @@ def login():
 def register():
     form = Registration()
     if form.validate_on_submit():
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
+
+        addData(username, password, email)
+
         flash(f"Sucsessfully created account for {form.username.data}", "success")
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
@@ -48,6 +75,8 @@ def register():
 @app.route('/features')
 def features():
     return render_template('features.html')
+
+
 
 #Drafting______________
 @app.route('/users')
