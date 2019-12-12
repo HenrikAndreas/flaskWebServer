@@ -30,20 +30,26 @@ def login():
     form = Login() # Form from the forms.py file
     if form.validate_on_submit():
         if form.username.data == "Henrik" and form.password.data == "7mammA99":
+            flash(f"You're now logged in {form.username.data}", "success")
             return redirect(url_for('home'))
         else:
             flash(f"Unsuccessful login. Check credentials", "danger")
     return render_template('login.html', title = 'Login', form=form)
 
 
-
-#DRAFITNG!!
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = Registration()
+    if form.validate_on_submit():
+        flash(f"Sucsessfully created account for {form.username.data}", "success")
+        return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
+@app.route('/features')
+def features():
+    return render_template('features.html')
 
+#Drafting______________
 @app.route('/users')
 def users():
     return render_template('users.html')

@@ -28,13 +28,10 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login')}}">Login</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Features</a>
+                  <a class="nav-link" href=" {{ url_for('features') }}">Features</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">GPIO</a>
@@ -49,8 +46,14 @@
                     <a class="dropdown-item" href="#">Camera</a>
                   </div>
                 </li>
+
               </ul>
+              
             </div>
+
+            <a class="navbar-brand" href="{{ url_for('login')}}">Login</a>
+            <a class="navbar-brand" href="{{ url_for('register') }}">Register</a>
+
           </nav>
         
           <main role="main" class="container">
@@ -70,7 +73,8 @@
                   {% endif %}
                 {% endwith %}
 
-                {% block content %}{% endblock %} <!--Inserted template-->
+                <!--Inserted template-->
+                {% block content %}{% endblock %} 
               </div>
               <div class="col-md-4">
                 <div class="content-section">
