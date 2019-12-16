@@ -1,3 +1,6 @@
+#login-background {
+    background-image: url('wallpaper.jpg');
+}
 .dropdown-menu {
     background-color: #343A40;
 }
@@ -6,7 +9,8 @@
     color: white;
 }
 .content-section {
-    background: #ffffff;
+    color: white;
+    background-color: #343A40;
     padding: 10px 20px;
     border: 1px solid #dddddd;
     border-radius: 3px;
@@ -15,5 +19,14 @@
   }
 
 .content-section a {
-    color: black;
+    color: white;
 }
+
+.content-section h3 {
+    color: white;
+}
+.list-group-item-light {
+    color: #343A40;
+    background-color: #fdfdfe;
+}
+

@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#" style="color: white">Henrik Andreas</a>
+                <small class="text-muted">16.12.2019</small>
+            </div>
+            <h2><a class="article-title" href="#" style="color: white">Instructions</a></h2>
+            <p class="article-content">Enter '0' to turn my lamp off, or '1' to turn it on</p>
+        </div>
+    </article>
+
+    <div class="content-section" id="login-section">
+        <form method="POST" action="{{ url_for('lampverification', username=username) }}">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="color: white;">Turn on / off my lamp</legend>
+                <div class="form-group">
+                    {{ form.value(class="form-control form-control-lg") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.submit(class="btn") }}
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}
