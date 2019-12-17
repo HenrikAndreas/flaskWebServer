@@ -119,9 +119,9 @@ def lampverification(username):
             print("Lamp on")
         elif request.form.get('value') == '0' :
             print("Lamp off")
-        # if (request.form.get('value')) == '0':
+        # if (request.form.get('value')) == '1':
         #     lampOn(channel)
-        # elif (request.form.get('value')) == '1':
+        # elif (request.form.get('value')) == '0':
         #     lampOff(channel)
     return redirect(url_for('lamp', username=username))
 
