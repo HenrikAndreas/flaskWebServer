@@ -1,6 +1,7 @@
-from flask import Flask, redirect, make_response, render_template, request, url_for, flash
+from flask import Flask, redirect, make_response, render_template, request, url_for, flash, Response
 from forms import Login, Lamp
 import os
+import cv2
 # import RPi.GPIO as GPIO
 
 # # Pin from which we'll output voltage
@@ -21,6 +22,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(16)
+cam = cv2.VideoCapture(0) # For livestream
 # app.secret_key = os.urandom(16) #?
 
 posts = [
@@ -83,6 +85,18 @@ def lamp(username):
         return render_template('lamp.html', title='Lamp', username=username, form=form)
     return 'Access denied'
 
+#Livestream test
+def gen():
+   while True: 
+      rval, frame = cam.read()
+      cv2.imwrite('pic.jpg', frame)
+      yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + open('pic.jpg', 'rb').read() + b'\r\n')
+
+@app.route('/video_feed') 
+def video_feed(): 
+   return Response(gen(), mimetype='multipart/x-mixed-replace; boundary=frame')
+# Livestream test over
+
 # POST site, verifying data and turning on / off lamp
 @app.route('/<username>/lampverification', methods=['POST'])
 def lampverification(username):
@@ -98,7 +112,7 @@ def lampverification(username):
     return redirect(url_for('lamp', username=username))
     
 if __name__ == "__main__":
-    app.run('0.0.0.0', debug=True)
+    app.run('0.0.0.0', debug=True, threaded=True)
 
 
 # terminal with requests
