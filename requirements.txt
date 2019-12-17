@@ -1,5 +1,3 @@
 Flask
 Flask-WTF
 RPi.GPIO
-Numpy
-OpenCV-python
